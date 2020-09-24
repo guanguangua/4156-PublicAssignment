@@ -149,6 +149,7 @@ class PlayGame {
   private static boolean checkWin(char[][] board, char type, int x, int y) {
     int counterX = 0;
     int counterY = 0;
+    // check vertical and horizontal
     for (int i = 0; i < 3; ++i) {
       counterY += board[x][i] == type ? 1 : 0;
       counterX += board[i][y] == type ? 1 : 0;
@@ -156,7 +157,8 @@ class PlayGame {
     if (counterX == 3 || counterY == 3) {
       return true;
     }
-    if (x == y) {
+    // check diagonal
+    if (x == y || x == 2 - y) {
       counterX = 0;
       counterY = 0;
       for (int i = 0; i < 3; ++i) {
